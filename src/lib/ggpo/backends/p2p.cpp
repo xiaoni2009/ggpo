@@ -269,6 +269,7 @@ Peer2PeerBackend::AddLocalInput(GGPOPlayerHandle player,
    GameInput input;
    GGPOErrorCode result;
 
+   //校验是不是在回滚中
    if (_sync.InRollback()) {
       return GGPO_ERRORCODE_IN_ROLLBACK;
    }
@@ -319,6 +320,7 @@ Peer2PeerBackend::SyncInput(void *values,
    if (_synchronizing) {
       return GGPO_ERRORCODE_NOT_SYNCHRONIZED;
    }
+   //同步输入
    flags = _sync.SynchronizeInputs(values, size);
    if (disconnect_flags) {
       *disconnect_flags = flags;

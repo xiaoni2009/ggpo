@@ -278,7 +278,7 @@ InputQueue::AdvanceQueueHead(int frame)
       /*
        * This can occur when the frame delay has dropped since the last
        * time we shoved a frame into the system.  In this case, there's
-       * no room on the queue.  Toss it.
+       * no room on the queue.  Toss 扔 it.
        */
       Log("Dropping input frame %d (expected next frame to be %d).\n",
           frame, expected_frame);
@@ -288,7 +288,7 @@ InputQueue::AdvanceQueueHead(int frame)
    while (expected_frame < frame) {
       /*
        * This can occur when the frame delay has been increased since the last
-       * time we shoved a frame into the system.  We need to replicate the
+       * time we shoved 推 a frame into the system.  We need to replicate 复制 the
        * last frame in the queue several times in order to fill the space
        * left.
        */

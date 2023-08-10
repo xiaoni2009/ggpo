@@ -115,9 +115,11 @@ Sync::SynchronizeInputs(void *values, int size)
       GameInput input;
       //判断本地连接状态
       if (_local_connect_status[i].disconnected && _framecount > _local_connect_status[i].last_frame) {
+         //如果UDP本地连接断开 && 帧数 > UDP本地连接的上一帧，disconnect_flags 1左移i位=2^i, input清空
          disconnect_flags |= (1 << i);
          input.erase();
       } else {
+         //未断链 或者 帧数 <= UDP本地连接的上一帧，则从输入队列取一个输入
          _input_queues[i].GetInput(_framecount, &input);
       }
       memcpy(output + (i * _config.input_size), input.bits, _config.input_size);
@@ -141,6 +143,7 @@ Sync::IncrementFrame(void)
    SaveCurrentFrame();
 }
 
+//矫正模拟,回滚
 void
 Sync::AdjustSimulation(int seek_to)
 {
