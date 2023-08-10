@@ -11,6 +11,7 @@ TimeSync::TimeSync()
 {
    memset(_local, 0, sizeof(_local));
    memset(_remote, 0, sizeof(_remote));
+   //FRAME_WINDOW_SIZE = 40
    _next_prediction = FRAME_WINDOW_SIZE * 3;
 }
 

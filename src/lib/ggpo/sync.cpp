@@ -113,6 +113,7 @@ Sync::SynchronizeInputs(void *values, int size)
    memset(output, 0, size);
    for (int i = 0; i < _config.num_players; i++) {
       GameInput input;
+      //判断本地连接状态
       if (_local_connect_status[i].disconnected && _framecount > _local_connect_status[i].last_frame) {
          disconnect_flags |= (1 << i);
          input.erase();
